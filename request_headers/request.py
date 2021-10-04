@@ -11,6 +11,14 @@ parser = parser.parse_args()
 def _requestHeaders():
     if parser.target:
         print(parser.target)
+        try:
+            url = requests.get(url=parser.target)
+            #print(url.headers) -> This line show our project like a dictionry
+            header = dict(url.headers)
+            for h in header:
+                print(h + " : " + header[h])
+        except:
+            print("We didn't find the link")
     else:
         print("We have not objective!")
 
